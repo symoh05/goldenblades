@@ -1,0 +1,1476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Golden Blades Barbershop | Premium Barber Services in Nairobi</title>
+  <meta name="description" content="Golden Blades Barbershop offers premium grooming services in Nairobi - haircuts, beard trims, spa treatments, and more. Experience luxury grooming in Kilimani.">
+  <meta name="keywords" content="barber Nairobi, haircut Kilimani, beard trim, men's grooming, barbershop Kenya, spa services, hair dye, manicure, pedicure, massage Nairobi">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* ===== Global Styles ===== */
+    :root {
+      --black: #000000;
+      --white: #FFFFFF;
+      --gold: #D4AF37; /* Classic gold color for barbershop */
+      --dark-gold: #B8860B;
+      --gray: #333333;
+      --light-gray: #f5f5f5;
+      --cream: #FFF8E7;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Playfair Display', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    
+    body {
+      background-color: var(--cream);
+      color: var(--black);
+      line-height: 1.7;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    section {
+      padding: 80px 0;
+    }
+    
+    h2 {
+      font-size: 2.5rem;
+      margin-bottom: 40px;
+      position: relative;
+      display: inline-block;
+      color: var(--black);
+    }
+    
+    h2:after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 80px;
+      height: 4px;
+      background: var(--gold);
+    }
+    
+    /* ===== Animations ===== */
+    @keyframes slideInUp {
+      from {
+        transform: translateY(100px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    @keyframes slideInLeft {
+      from {
+        transform: translateX(-100px);
+        opacity: 0;
+      }
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+
+    @keyframes slideInRight {
+      from {
+        transform: translateX(100px);
+        opacity: 0;
+      }
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+
+    .slide-in-up {
+      animation: slideInUp 0.8s ease-out forwards;
+    }
+
+    .slide-in-left {
+      animation: slideInLeft 0.8s ease-out forwards;
+    }
+
+    .slide-in-right {
+      animation: slideInRight 0.8s ease-out forwards;
+    }
+
+    [data-animate] {
+      opacity: 0;
+    }
+
+    .delay-1 { animation-delay: 0.2s; }
+    .delay-2 { animation-delay: 0.4s; }
+    .delay-3 { animation-delay: 0.6s; }
+    .delay-4 { animation-delay: 0.8s; }
+
+    /* ===== Header ===== */
+    header {
+      background-color: var(--black);
+      padding: 20px 0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    }
+    
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    .logo img {
+      height: 60px;
+      width: auto;
+    }
+    
+    /* Navigation */
+    .nav-menu {
+      display: flex;
+      list-style: none;
+      gap: 0;
+    }
+    
+    .nav-menu > li {
+      position: relative;
+    }
+    
+    .nav-menu > li > a {
+      color: var(--white);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 18px;
+      transition: all 0.3s;
+      padding: 20px 25px;
+      display: block;
+    }
+    
+    .nav-menu > li > a:hover {
+      color: var(--gold);
+      background-color: rgba(212, 175, 55, 0.1);
+    }
+    
+    /* Mobile Menu Toggle */
+    .menu-toggle {
+      display: none;
+      cursor: pointer;
+      flex-direction: column;
+      gap: 5px;
+      padding: 10px;
+    }
+    
+    .menu-toggle span {
+      display: block;
+      width: 30px;
+      height: 3px;
+      background: var(--white);
+      transition: all 0.3s;
+    }
+    
+    /* ===== Hero Section ===== */
+    .hero {
+      position: relative;
+      height: 80vh;
+      min-height: 600px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      background-color: var(--black);
+    }
+    
+    .hero-slides {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+    
+    .hero-slide {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      opacity: 0;
+      transition: opacity 1.5s ease-in-out;
+    }
+    
+    .hero-slide.active {
+      opacity: 0.4;
+    }
+    
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      padding: 0 20px;
+      color: var(--white);
+    }
+    
+    .hero-text {
+      max-width: 600px;
+    }
+    
+    .hero h1 {
+      font-size: 3.5rem;
+      margin-bottom: 20px;
+      line-height: 1.2;
+      color: #D4AF37;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+    
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+      max-width: 500px;
+    }
+    
+    .hero-buttons {
+      display: flex;
+      gap: 20px;
+      margin-top: 40px;
+    }
+    
+    .btn {
+      display: inline-block;
+      padding: 15px 30px;
+      border-radius: 4px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s;
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    h2 {
+      color: #D4AF37;;
+    }
+    h3 {
+      color: black;
+    }
+    .btn-primary {
+      background-color: var(--gold);
+      color: var(--black);
+    }
+    
+    .btn-primary:hover {
+      background-color: var(--white);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    }
+    
+    .btn-secondary {
+      background-color: transparent;
+      color: var(--white);
+      border: 2px solid var(--white);
+    }
+    
+    .btn-secondary:hover {
+      background-color: var(--white);
+      color: var(--black);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    }
+    
+    /* ===== Section Styles ===== */
+    .dark-section {
+      background-color: var(--black);
+      color: var(--white);
+    }
+    
+    .light-section {
+      background-color: var(--white);
+      color: var(--black);
+    }
+    
+    .gold-section {
+      background-color: var(--gold);
+      color: var(--black);
+    }
+    
+    /* Services Section */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+    
+    .service-card {
+      background: var(--light-gray);
+      border-radius: 8px;
+      overflow: hidden;
+      transition: all 0.3s;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      border-top: 4px solid var(--gold);
+    }
+    
+    .service-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+    }
+    
+    .service-img {
+      height: 200px;
+      overflow: hidden;
+    }
+    
+    .service-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s;
+    }
+    
+    .service-card:hover .service-img img {
+      transform: scale(1.1);
+    }
+    
+    .service-content {
+      padding: 25px;
+    }
+    
+    .service-content h3 {
+      color: var(--gold);
+      margin-bottom: 15px;
+      font-size: 1.5rem;
+    }
+    
+    .price {
+      color: var(--dark-gold);
+      font-weight: bold;
+      margin-top: 15px;
+      font-size: 1.2rem;
+    }
+    
+    /* About Section */
+    .about-content {
+      display: flex;
+      align-items: center;
+      gap: 50px;
+    }
+    
+    .about-img {
+      flex: 1;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+    
+    .about-img img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    
+    .about-text {
+      flex: 1;
+    }
+    
+    /* Team Section */
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+    
+    .team-member {
+      background: var(--white);
+      border-radius: 8px;
+      overflow: hidden;
+      text-align: center;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transition: all 0.3s;
+    }
+    
+    .team-member:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+    }
+    
+    .member-img {
+      height: 300px;
+      overflow: hidden;
+    }
+    
+    .member-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s;
+    }
+    
+    .team-member:hover .member-img img {
+      transform: scale(1.05);
+    }
+    
+    .member-info {
+      padding: 20px;
+    }
+    
+    .member-info h3 {
+      color: var(--gold);
+      margin-bottom: 5px;
+    }
+    
+    .member-title {
+      color: var(--dark-gold);
+      font-style: italic;
+      margin-bottom: 15px;
+    }
+    
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+    }
+    
+    .social-links a {
+      color: var(--black);
+      transition: color 0.3s;
+    }
+    
+    .social-links a:hover {
+      color: var(--gold);
+    }
+    
+    /* Stats Section */
+    .stats-section {
+      position: relative;
+      padding: 100px 0;
+      color: var(--white);
+      overflow: hidden;
+    }
+    
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 30px;
+      text-align: center;
+    }
+    
+    .stat-item {
+      padding: 30px;
+      background: rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(4px);
+      border-radius: 8px;
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+    
+    .stat-item:hover {
+      transform: translateY(-5px);
+      background: rgba(0, 0, 0, 0.5);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    }
+    
+    .stat-number {
+      font-size: 3.5rem;
+      font-weight: 700;
+      color: var(--gold);
+      margin-bottom: 10px;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    }
+    
+    .stat-label {
+      font-size: 1.1rem;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    }
+    
+    /* Testimonials */
+    .testimonials-container {
+      margin-top: 40px;
+      display: flex;
+      gap: 30px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+    }
+    
+    .testimonials-container::-webkit-scrollbar {
+      display: none;
+    }
+    
+    .testimonial {
+      flex: 0 0 100%;
+      scroll-snap-align: start;
+      background: var(--black);
+      padding: 30px;
+      color: white;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      position: relative;
+      min-width: 0;
+    }
+    
+    .testimonial:before {
+      content: '"';
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      font-size: 5rem;
+      color: var(--gold);
+      opacity: 0.2;
+      font-family: serif;
+      line-height: 1;
+    }
+    
+    .testimonial-content {
+      position: relative;
+      z-index: 1;
+      padding-left: 40px;
+    }
+    
+    .testimonial-text p {
+      font-style: italic;
+      line-height: 1.5;
+      margin: 0 0 20px 0;
+      text-align: center;
+    }
+    
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      margin-top: 20px;
+    }
+    
+    .author-img {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin-right: 15px;
+    }
+    
+    .author-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .author-info h4 {
+      color: var(--gold);
+      margin-bottom: 5px;
+    }
+    
+    /* Testimonial dots */
+    .testimonial-dots {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 20px;
+    }
+    
+    .testimonial-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background-color: rgba(0, 0, 0, 0.2);
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    
+    .testimonial-dot.active {
+      background-color: var(--gold);
+    }
+    
+    /* Gallery Section */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 20px;
+      margin-top: 40px;
+    }
+    
+    .gallery-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 8px;
+      aspect-ratio: 4/3;
+    }
+    
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s;
+    }
+    
+    .gallery-item:hover img {
+      transform: scale(1.1);
+    }
+    
+    /* Booking Section */
+    .booking-form {
+      background: var(--white);
+      padding: 40px;
+      border-radius: 8px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .form-group {
+      margin-bottom: 20px;
+    }
+    
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+    
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 12px 15px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 16px;
+    }
+    
+    .form-row {
+      display: flex;
+      gap: 20px;
+    }
+    
+    .form-row .form-group {
+      flex: 1;
+    }
+    
+    /* CTA Section */
+    .cta-content {
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .cta-content h2 {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    .cta-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 40px;
+    }
+    
+    /* Hours Section */
+    .hours-container {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 40px;
+    }
+    
+    .hours-info {
+      flex: 1;
+      background: var(--white);
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    
+    .hours-info h3 {
+      color: var(--gold);
+      margin-bottom: 20px;
+    }
+    
+    .hours-table {
+      width: 100%;
+    }
+    
+    .hours-table tr {
+      border-bottom: 1px solid #eee;
+    }
+    
+    .hours-table tr:last-child {
+      border-bottom: none;
+    }
+    
+    .hours-table td {
+      padding: 10px 0;
+    }
+    
+    .hours-table td:last-child {
+      text-align: right;
+      font-weight: 600;
+    }
+    
+    /* ===== Footer ===== */
+    footer {
+      background-color: var(--black);
+      color: var(--white);
+      padding: 60px 0 30px;
+    }
+    
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+    
+    .footer-logo img {
+      height: 60px;
+      margin-bottom: 20px;
+    }
+    
+    .footer-links h3, 
+    .social-links h3 {
+      color: var(--gold);
+      margin-bottom: 20px;
+      font-size: 1.3rem;
+    }
+    
+    .footer-links ul {
+      list-style: none;
+    }
+    
+    .footer-links li {
+      margin-bottom: 10px;
+    }
+    
+    .footer-links a {
+      color: var(--white);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    
+    .footer-links a:hover {
+      color: var(--gold);
+    }
+    
+    .contact-info p {
+      margin-bottom: 15px;
+      display: flex;
+      align-items: flex-start;
+    }
+    
+    .contact-info i {
+      margin-right: 10px;
+      color: var(--gold);
+    }
+    
+    .social-links a {
+      display: inline-block;
+      color: var(--white);
+      font-size: 1.5rem;
+      margin-right: 15px;
+      transition: color 0.3s;
+    }
+    
+    .social-links a:hover {
+      color: var(--gold);
+    }
+    
+    .copyright {
+      text-align: center;
+      padding-top: 30px;
+      border-top: 1px solid var(--gold);
+    }
+    
+    /* ===== Responsive Design ===== */
+    @media (max-width: 992px) {
+      .hero h1 {
+        font-size: 2.8rem;
+      }
+      
+      .about-content {
+        flex-direction: column;
+      }
+      
+      .about-img {
+        margin-bottom: 30px;
+      }
+      
+      .nav-menu > li > a {
+        padding: 20px 15px;
+        font-size: 16px;
+      }
+      
+      .hours-container {
+        flex-direction: column;
+        gap: 20px;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: flex;
+      }
+      
+      .nav-menu {
+        position: fixed;
+        top: 90px;
+        left: -100%;
+        width: 100%;
+        background: var(--black);
+        flex-direction: column;
+        padding: 0;
+        transition: left 0.3s;
+      }
+      
+      .nav-menu.active {
+        left: 0;
+      }
+      
+      .nav-menu > li {
+        width: 100%;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+      }
+      
+      .nav-menu > li > a {
+        padding: 15px 20px;
+      }
+      
+      section {
+        padding: 60px 0;
+      }
+      
+      h2 {
+        font-size: 2rem;
+      }
+      
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+      
+      .hero-buttons {
+        flex-direction: column;
+        gap: 15px;
+      }
+      
+      .btn {
+        width: 100%;
+      }
+      
+      .testimonial {
+        flex: 0 0 85%;
+      }
+      
+      .form-row {
+        flex-direction: column;
+        gap: 0;
+      }
+    }
+    
+    @media (max-width: 576px) {
+      h2 {
+        font-size: 1.8rem;
+      }
+      
+      .hero h1 {
+        font-size: 1.8rem;
+      }
+      
+      .hero p {
+        font-size: 1rem;
+      }
+      
+      .stats-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .cta-buttons {
+        flex-direction: column;
+      }
+      
+      .testimonial {
+        flex: 0 0 90%;
+      }
+    }
+    
+    /* Mobile Menu Animation */
+    .menu-toggle.active span:nth-child(1) {
+      transform: translateY(8px) rotate(45deg);
+    }
+    
+    .menu-toggle.active span:nth-child(2) {
+      opacity: 0;
+    }
+    
+    .menu-toggle.active span:nth-child(3) {
+      transform: translateY(-8px) rotate(-45deg);
+    }
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <div class="header-container">
+      <div class="logo">
+        <a href="index.html"><img src="golden-blades-logo.png" alt="Golden Blades Barbershop Logo"></a>
+      </div>
+      
+      <div class="menu-toggle" id="mobile-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      
+      <ul class="nav-menu">
+        <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+        <li><a href="services.html"><i class="fas fa-cut"></i> Services</a></li>
+        <li><a href="barbers.html"><i class="fas fa-user"></i> Our Barbers</a></li>
+        <li><a href="gallery.html"><i class="fas fa-images"></i> Gallery</a></li>
+        <li><a href="about.html"><i class="fas fa-info-circle"></i> About</a></li>
+        <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+        <li><a href="tel:+254113761688" class="btn-primary"><i class="fas fa-phone"></i> Call Now</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-slides">
+      <div class="hero-slide active" style="background-image: url('https://images.unsplash.com/photo-1599351431405-41b2b0f0e8df?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1473&q=80');"></div>
+      <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1585747860715-2ba9076d0e5a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');"></div>
+      <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1562788865-9d87c8f3388a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');"></div>
+    </div>
+    
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-text" data-animate="slide-in-left">
+          <h1>Premium Grooming Experience in Nairobi</h1>
+          <p>Golden Blades Barbershop offers luxury grooming services in a serene environment at the heart of Kilimani. Experience the perfect blend of traditional barbering and modern spa treatments.</p>
+          <div class="hero-buttons">
+            <a href="#booking" class="btn btn-primary">Book Now</a>
+            <a href="tel:+254113761688" class="btn btn-secondary">Call Now</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section class="light-section">
+    <div class="container">
+      <h2 data-animate="slide-in-up">Our Services</h2>
+      <p data-animate="slide-in-up" class="delay-1">Premium grooming services tailored to your needs</p>
+      
+      <div class="services-grid">
+        <div class="service-card" data-animate="slide-in-up">
+          <div class="service-img">
+            <img src="https://images.unsplash.com/photo-1519699047748-de8e457a634e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1480&q=80" alt="Haircut Service">
+          </div>
+          <div class="service-content">
+            <h3>Premium Haircut</h3>
+            <p>Expert haircuts tailored to your style with precision tools and finishing products for a polished look.</p>
+            <div class="price">KSh 1,200</div>
+          </div>
+        </div>
+        
+        <div class="service-card" data-animate="slide-in-up" class="delay-1">
+          <div class="service-img">
+            <img src="https://images.unsplash.com/photo-1605497788044-5a32c7078486?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="Beard Trim">
+          </div>
+          <div class="service-content">
+            <h3>Beard Trim & Grooming</h3>
+            <p>Professional beard shaping, trimming and conditioning for a well-groomed appearance.</p>
+            <div class="price">KSh 800</div>
+          </div>
+        </div>
+        
+        <div class="service-card" data-animate="slide-in-up" class="delay-2">
+          <div class="service-img">
+            <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Hair Dye">
+          </div>
+          <div class="service-content">
+            <h3>Hair Coloring</h3>
+            <p>Professional hair coloring services using premium products for vibrant, long-lasting color.</p>
+            <div class="price">KSh 2,500</div>
+          </div>
+        </div>
+        
+        <div class="service-card" data-animate="slide-in-up" class="delay-3">
+          <div class="service-img">
+            <img src="https://images.unsplash.com/photo-1544168213-4f041d83aac5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="Facial Treatment">
+          </div>
+          <div class="service-content">
+            <h3>Men's Facial</h3>
+            <p>Deep cleansing facial treatment designed specifically for men's skin needs.</p>
+            <div class="price">KSh 1,500</div>
+          </div>
+        </div>
+        
+        <div class="service-card" data-animate="slide-in-up" class="delay-4">
+          <div class="service-img">
+            <img src="https://images.unsplash.com/photo-1596704017250-7b1cde7c3c4b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="Manicure">
+          </div>
+          <div class="service-content">
+            <h3>Manicure & Pedicure</h3>
+            <p>Professional nail care services including trimming, shaping and polishing.</p>
+            <div class="price">KSh 1,800</div>
+          </div>
+        </div>
+        
+        <div class="service-card" data-animate="slide-in-up" class="delay-4">
+          <div class="service-img">
+            <img src="https://images.unsplash.com/photo-1544164546-7764c3b74e0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Massage">
+          </div>
+          <div class="service-content">
+            <h3>Relaxing Massage</h3>
+            <p>Therapeutic massage to relieve stress and muscle tension in a tranquil setting.</p>
+            <div class="price">KSh 2,500</div>
+          </div>
+        </div>
+      </div>
+      <div style="text-align: center; margin-top: 40px;" data-animate="slide-in-up" class="delay-4">
+        <a href="services.html" class="btn btn-primary">View All Services</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="dark-section">
+    <div class="container">
+      <div class="about-content">
+        <div class="about-text" data-animate="slide-in-left">
+          <h2>Welcome to Golden Blades</h2>
+          <p>Located in the serene environment of Kilimani at Menelik Suites, Golden Blades Barbershop offers a premium grooming experience with ample parking and a relaxing atmosphere.</p>
+          <p>Our friendly professional staff are trained to ensure each client leaves with a smile. Whether you need a haircut, beard trim, or full spa treatment, we provide exceptional service with attention to detail.</p>
+          <p>Feeling tired or stressed? Golden Blades is the perfect place to unwind and get pampered with our range of services including facials, manicures, pedicures, and massage treatments.</p>
+          <div style="margin-top: 20px;">
+            <a href="about.html" class="btn btn-primary">Our Story</a>
+          </div>
+        </div>
+        <div class="about-img" data-animate="slide-in-right">
+          <img src="https://images.unsplash.com/photo-1585747860715-2ba9076d0e5a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Golden Blades Barbershop Interior">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team Section -->
+  <section class="light-section">
+    <div class="container">
+      <h2 data-animate="slide-in-up">Meet Our Barbers</h2>
+      <p data-animate="slide-in-up" class="delay-1">Our skilled professionals are ready to give you the perfect look</p>
+      
+      <div class="team-grid">
+        <div class="team-member" data-animate="slide-in-up">
+          <div class="member-img">
+            <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1361&q=80" alt="John Doe">
+          </div>
+          <div class="member-info">
+            <h3>John Doe</h3>
+            <p class="member-title">Lead Barber</p>
+            <p>With over 10 years of experience, John specializes in classic and modern haircuts.</p>
+            <div class="social-links">
+              <a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a>
+              <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+              <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="team-member" data-animate="slide-in-up" class="delay-1">
+          <div class="member-img">
+            <img src="https://images.unsplash.com/photo-1534528741702-a0c532e5574e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Jane Smith">
+          </div>
+          <div class="member-info">
+            <h3>Jane Smith</h3>
+            <p class="member-title">Senior Stylist</p>
+            <p>Jane is known for her creative styling and expertise in hair coloring and treatments.</p>
+            <div class="social-links">
+              <a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a>
+              <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="team-member" data-animate="slide-in-up" class="delay-2">
+          <div class="member-img">
+            <img src="https://images.unsplash.com/photo-1559544542-98469fef97bc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="David Lee">
+          </div>
+          <div class="member-info">
+            <h3>David Lee</h3>
+            <p class="member-title">Beard Specialist</p>
+            <p>David is passionate about beard grooming and provides exceptional beard trims and styling.</p>
+            <div class="social-links">
+              <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="text-align: center; margin-top: 40px;" data-animate="slide-in-up" class="delay-3">
+        <a href="barbers.html" class="btn btn-primary">Meet All Barbers</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="stats-section" style="background-image: url('uploads/class.jpeg); background-size: cover; background-position: center;">
+    <div class="container">
+      <div class="stats-grid">
+        <h2 data-animate="slide-in-up">By the Numbers</h2>
+        <div class="stat-item" data-animate="slide-in-up">
+          <span class="stat-number">15+</span>
+          <p class="stat-label">Years of Experience</p>
+        </div>
+        <div class="stat-item" data-animate="slide-in-up" class="delay-1">
+          <span class="stat-number">3000+</span>
+          <p class="stat-label">Happy Clients</p>
+        </div>
+        <div class="stat-item" data-animate="slide-in-up" class="delay-2">
+          <span class="stat-number">20+</span>
+          <p class="stat-label">Skilled Barbers</p>
+        </div>
+        <div class="stat-item" data-animate="slide-in-up" class="delay-3">
+          <span class="stat-number">5-Star</span>
+          <p class="stat-label">Customer Rating</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="light-section">
+    <div class="container">
+      <h2 data-animate="slide-in-up">What Our Clients Say</h2>
+      <p data-animate="slide-in-up" class="delay-1">Read testimonials from our satisfied customers</p>
+      
+      <div class="testimonials-container">
+        <div class="testimonial slide-in-left">
+          <div class="testimonial-content">
+            <p class="testimonial-text">"The best barbershop experience I've had in Nairobi! The barbers are skilled and the atmosphere is fantastic. Highly recommend!"</p>
+            <div class="testimonial-author">
+              <div class="author-img">
+                <img src="https://images.unsplash.com/photo-1503104834685-6fcfdbd95b60?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80" alt="Client 1">
+              </div>
+              <div class="author-info">
+                <h4>James Omondi</h4>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="testimonial">
+          <div class="testimonial-content">
+            <p class="testimonial-text">"Excellent service and attention to detail. I always leave feeling refreshed and looking sharp. Golden Blades is my go-to barbershop."</p>
+            <div class="testimonial-author">
+              <div class="author-img">
+                <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80" alt="Client 2">
+              </div>
+              <div class="author-info">
+                <h4>Sarah Wanjiku</h4>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="testimonial slide-in-right">
+          <div class="testimonial-content">
+            <p class="testimonial-text">"I tried the beard trim and facial – amazing! The staff are professional and the quality of service is top-notch. Will definitely be back."</p>
+            <div class="testimonial-author">
+              <div class="author-img">
+                <img src="https://images.unsplash.com/photo-1547425260-76bcbf09c240?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80" alt="Client 3">
+              </div>
+              <div class="author-info">
+                <h4>Michael Kariuki</h4>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-dots">
+        <button class="testimonial-dot active"></button>
+        <button class="testimonial-dot"></button>
+        <button class="testimonial-dot"></button>
+      </div>
+    </div>
+  </section>
+
+  <section class="light-section">
+    <div class="container">
+      <h2 data-animate="slide-in-up">Our Gallery</h2>
+      <p data-animate="slide-in-up" class="delay-1">A glimpse of our work and the barbershop ambiance</p>
+      
+      <div class="gallery-grid">
+        <div class="gallery-item" data-animate="slide-in-up">
+          <img src="https://images.unsplash.com/photo-1615793313988-3b59b1949154?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Gallery Image 1">
+        </div>
+        <div class="gallery-item" data-animate="slide-in-up" class="delay-1">
+          <img src="https://images.unsplash.com/photo-1603471453734-f4c57379245f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Gallery Image 2">
+        </div>
+        <div class="gallery-item" data-animate="slide-in-up" class="delay-2">
+          <img src="https://images.unsplash.com/photo-1622544348524-a11194853a51?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Gallery Image 3">
+        </div>
+        <div class="gallery-item" data-animate="slide-in-up" class="delay-3">
+          <img src="https://images.unsplash.com/photo-1622544348674-38941319a31b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Gallery Image 4">
+        </div>
+        <div class="gallery-item" data-animate="slide-in-up" class="delay-4">
+          <img src="https://images.unsplash.com/photo-1615793314009-8235c731a9cb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Gallery Image 5">
+        </div>
+        <div class="gallery-item" data-animate="slide-in-up" class="delay-4">
+          <img src="https://images.unsplash.com/photo-1622544348666-1c24358f16b1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Gallery Image 6">
+        </div>
+      </div>
+      <div style="text-align: center; margin-top: 40px;" data-animate="slide-in-up" class="delay-4">
+        <a href="gallery.html" class="btn btn-primary">View More Photos</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="gold-section" id="booking">
+    <div class="container">
+      <h3 class="light-text" data-animate="slide-in-up">Book Your Appointment</h3>
+      <p class="light-text" data-animate="slide-in-up" class="delay-1">Schedule your grooming session with us today</p>
+      
+      <div class="booking-form" data-animate="slide-in-up" class="delay-2">
+        <form action="#" method="post">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone</label>
+              <input type="tel" id="phone" name="phone" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email">
+          </div>
+          <div class="form-group">
+            <label for="service">Select Service</label>
+            <select id="service" name="service" required>
+              <option value="">-- Select a Service --</option>
+              <option value="haircut">Premium Haircut - KSh 1,200</option>
+              <option value="beard_trim">Beard Trim & Grooming - KSh 800</option>
+              <option value="hair_color">Hair Coloring - KSh 2,500</option>
+              <option value="facial">Men's Facial - KSh 1,500</option>
+              <option value="manicure_pedicure">Manicure & Pedicure - KSh 1,800</option>
+              <option value="massage">Relaxing Massage - KSh 2,500</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="date">Date</label>
+              <input type="date" id="date" name="date" required>
+            </div>
+            <div class="form-group">
+              <label for="time">Time</label>
+              <input type="time" id="time" name="time" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="message">Special Requests</label>
+            <textarea id="message" name="message" rows="4"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Book Appointment</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <section class="dark-section">
+    <div class="container">
+      <div class="cta-content" data-animate="slide-in-up">
+        <h2 class="light-text">Ready for a Premium Grooming Experience?</h2>
+        <p class="light-text">Visit Golden Blades Barbershop in Kilimani, Nairobi, for top-notch services in a relaxing atmosphere.</p>
+        <div class="cta-buttons">
+          <a href="#booking" class="btn btn-primary">Book Online</a>
+          <a href="tel:+254113761688" class="btn btn-secondary">Call Us</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="light-section">
+    <div class="container">
+      <h2 data-animate="slide-in-up">Visit Us</h2>
+      <p data-animate="slide-in-up" class="delay-1">Our Location & Working Hours</p>
+      
+      <div class="hours-container">
+        <div class="hours-info" data-animate="slide-in-left">
+          <h3>Opening Hours</h3>
+          <table class="hours-table">
+            <tr>
+              <td>Monday - Friday:</td>
+              <td>9:00 AM - 7:00 PM</td>
+            </tr>
+            <tr>
+              <td>Saturday:</td>
+              <td>10:00 AM - 6:00 PM</td>
+            </tr>
+            <tr>
+              <td>Sunday:</td>
+              <td>Closed</td>
+            </tr>
+          </table>
+        </div>
+        <div class="hours-info" data-animate="slide-in-right">
+          <h3>Our Location</h3>
+          <p>Golden Blades Barbershop</p>
+          <p>Menelik Suites, Kilimani</p>
+          <p>Nairobi, Kenya</p>
+          <p><i class="fas fa-phone"></i> +254 113 761 688</p>
+          <p><i class="fas fa-envelope"></i> info@goldenblades.co.ke</p>
+          <p><a href="https://maps.google.com/?q=-1.2921,36.8219" target="_blank" style="color: var(--gold); text-decoration: none;"><i class="fas fa-map-marker-alt"></i> View on Google Maps</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-logo">
+          <img src="golden-blades-logo-white.png" alt="Golden Blades Barbershop Logo">
+          <p>Your premier destination for luxury grooming services in Nairobi.</p>
+        </div>
+        <div class="footer-links">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="barbers.html">Our Barbers</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+        <div class="contact-info">
+          <h3>Contact Us</h3>
+          <p><i class="fas fa-map-marker-alt"></i> Menelik Suites, Kilimani, Nairobi</p>
+          <p><i class="fas fa-phone"></i> +254 113 761 688</p>
+          <p><i class="fas fa-envelope"></i> info@goldenblades.co.ke</p>
+        </div>
+        <div class="social-links">
+          <h3>Follow Us</h3>
+          <a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+          <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+      <div class="copyright">
+        <p>&copy; 2025 Golden Blades Barbershop. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile Menu Toggle
+    const mobileMenu = document.getElementById('mobile-menu');
+    const navMenu = document.querySelector('.nav-menu');
+
+    mobileMenu.addEventListener('click', () => {
+      mobileMenu.classList.toggle('active');
+      navMenu.classList.toggle('active');
+    });
+
+    navMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.remove('active');
+        navMenu.classList.remove('active');
+      });
+    });
+
+    // Hero Slideshow
+    const slides = document.querySelectorAll('.hero-slide');
+    let currentSlide = 0;
+
+    function nextSlide() {
+      slides[currentSlide].classList.remove('active');
+      currentSlide = (currentSlide + 1) % slides.length;
+      slides[currentSlide].classList.add('active');
+    }
+
+    setInterval(nextSlide, 5000); // Change slide every 5 seconds
+
+    // Animation on Scroll
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('slide-in-up');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.2
+    });
+
+    document.querySelectorAll('[data-animate="slide-in-up"]').forEach((element) => {
+      observer.observe(element);
+    });
+
+    const observerLeft = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('slide-in-left');
+          observerLeft.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.2
+    });
+
+    document.querySelectorAll('[data-animate="slide-in-left"]').forEach((element) => {
+      observerLeft.observe(element);
+    });
+
+    const observerRight = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('slide-in-right');
+          observerRight.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.2
+    });
+
+    document.querySelectorAll('[data-animate="slide-in-right"]').forEach((element) => {
+      observerRight.observe(element);
+    });
+
+    // Testimonial Dots
+    const testimonialDots = document.querySelectorAll('.testimonial-dot');
+    const testimonialsContainer = document.querySelector('.testimonials-container');
+
+    testimonialDots.forEach((dot, index) => {
+      dot.addEventListener('click', () => {
+        testimonialsContainer.scrollTo({
+          left: testimonialsContainer.offsetWidth * index,
+          behavior: 'smooth'
+        });
+        testimonialDots.forEach(d => d.classList.remove('active'));
+        dot.classList.add('active');
+      });
+    });
+
+    testimonialsContainer.addEventListener('scroll', () => {
+      const scrollPosition = testimonialsContainer.scrollLeft;
+      const slideWidth = testimonialsContainer.offsetWidth;
+      const currentIndex = Math.round(scrollPosition / slideWidth);
+
+      testimonialDots.forEach(dot => dot.classList.remove('active'));
+      if (testimonialDots[currentIndex]) {
+        testimonialDots[currentIndex].classList.add('active');
+      }
+    });
+  </script>
+</body>
+</html>
